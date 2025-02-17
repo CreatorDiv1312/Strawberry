@@ -220,6 +220,9 @@
             <mxPoint x="515" y="10" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-91" value="&lt;strong data-end=&quot;1189&quot; data-start=&quot;1182&quot;&gt;GND&lt;/strong&gt; → &lt;strong data-end=&quot;1205&quot; data-start=&quot;1192&quot;&gt;ESP32 GND&lt;/strong&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="280" y="23" width="140" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
