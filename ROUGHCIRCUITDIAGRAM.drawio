@@ -12,6 +12,11 @@
             <mxPoint x="650" y="110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="822" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="bhfImXdg9pNfIHxLkrQA-1" value="ESP32" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;fontStyle=7" vertex="1" parent="1">
           <mxGeometry x="350" y="80" width="180" height="60" as="geometry" />
         </mxCell>
@@ -24,7 +29,7 @@
         <mxCell id="bhfImXdg9pNfIHxLkrQA-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-5" target="bhfImXdg9pNfIHxLkrQA-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bhfImXdg9pNfIHxLkrQA-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-5" target="bhfImXdg9pNfIHxLkrQA-4">
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-77" target="bhfImXdg9pNfIHxLkrQA-4">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="575" y="240" as="targetPoint" />
           </mxGeometry>
@@ -33,7 +38,7 @@
           <mxGeometry x="385" y="210" width="110" height="60" as="geometry" />
         </mxCell>
         <mxCell id="bhfImXdg9pNfIHxLkrQA-10" value="Power Supply (5V, GND)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="370" y="270" width="160" height="30" as="geometry" />
+          <mxGeometry x="380" y="270" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="bhfImXdg9pNfIHxLkrQA-11" value="&lt;li data-end=&quot;1162&quot; data-start=&quot;1142&quot;&gt;&lt;strong data-end=&quot;1150&quot; data-start=&quot;1144&quot;&gt;5V&lt;/strong&gt; → &lt;strong data-end=&quot;1160&quot; data-start=&quot;1153&quot;&gt;VCC&lt;/strong&gt;&lt;/li&gt;&lt;li data-end=&quot;1186&quot; data-start=&quot;1165&quot;&gt;&lt;strong data-end=&quot;1174&quot; data-start=&quot;1167&quot;&gt;GND&lt;/strong&gt; → &lt;strong data-end=&quot;1184&quot; data-start=&quot;1177&quot;&gt;GND&lt;/strong&gt;&lt;/li&gt;&lt;li data-end=&quot;1224&quot; data-start=&quot;1189&quot;&gt;&lt;strong data-end=&quot;1200&quot; data-start=&quot;1191&quot;&gt;TX/RX&lt;/strong&gt; → &lt;strong data-end=&quot;1222&quot; data-start=&quot;1203&quot;&gt;ESP32 UART Pins&lt;/strong&gt;&lt;/li&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="60" y="23" width="200" height="60" as="geometry" />
@@ -46,6 +51,174 @@
         </mxCell>
         <mxCell id="bhfImXdg9pNfIHxLkrQA-16" value="&lt;strong data-end=&quot;1596&quot; data-start=&quot;1589&quot;&gt;GND&lt;/strong&gt; → &lt;strong data-end=&quot;1624&quot; data-start=&quot;1599&quot;&gt;Servo GND&lt;/strong&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="520" y="240" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-26" target="bhfImXdg9pNfIHxLkrQA-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-26" target="bhfImXdg9pNfIHxLkrQA-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-26" value="" style="verticalLabelPosition=bottom;aspect=fixed;html=1;verticalAlign=top;fillColor=strokeColor;align=center;outlineConnect=0;shape=mxgraph.fluid_power.x11250;points=[[0.567,0,0],[0.567,1,0],[0.95,1,0]]" vertex="1" parent="1">
+          <mxGeometry x="126.15" y="260" width="97.7" height="93.94" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-27" value="MAIN BOARD&lt;div&gt;WITH CIRULAR COVER&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="2.5" y="147.5" width="120" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-33" value="&lt;strong data-end=&quot;358&quot; data-start=&quot;342&quot;&gt;GND (Ground)&lt;/strong&gt; → &lt;strong data-end=&quot;374&quot; data-start=&quot;361&quot;&gt;ESP32 GND&lt;/strong&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="240" y="188" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-34" value="ESP32 GPIO → Actuator Signal" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-50;" vertex="1" parent="1">
+          <mxGeometry x="170" y="160" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-37" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-1" target="bhfImXdg9pNfIHxLkrQA-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="210" as="sourcePoint" />
+            <mxPoint x="440" y="160" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-39" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="353.94" as="sourcePoint" />
+            <mxPoint x="380" y="307" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-41" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="bhfImXdg9pNfIHxLkrQA-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="310" as="sourcePoint" />
+            <mxPoint x="360" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-43" value="Control Signal (PWM)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="300" y="210" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.591;entryY=0.833;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-44" target="bhfImXdg9pNfIHxLkrQA-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.289;entryY=1.067;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-44" target="bhfImXdg9pNfIHxLkrQA-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="765" y="180" />
+              <mxPoint x="660" y="180" />
+              <mxPoint x="660" y="144" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-44" target="bhfImXdg9pNfIHxLkrQA-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="630" y="133" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-44" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;strong data-end=&quot;689&quot; data-start=&quot;678&quot;&gt;MAX9814&lt;/strong&gt; or &lt;strong data-end=&quot;703&quot; data-start=&quot;693&quot;&gt;KY-038&lt;/strong&gt;&lt;/font&gt;" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.radio.microphone_1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+          <mxGeometry x="730" y="210" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-48" value="MIC --&amp;gt;VCC" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="540" y="260" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-50" value="&lt;strong data-end=&quot;790&quot; data-start=&quot;779&quot;&gt;Mic GND&lt;/strong&gt; → &lt;strong data-end=&quot;806&quot; data-start=&quot;793&quot;&gt;ESP32 GND&lt;/strong&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="460" y="140" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-53" value="&lt;strong data-end=&quot;838&quot; data-start=&quot;813&quot;&gt;Mic Output (AO or DO)&lt;/strong&gt; → &lt;strong data-end=&quot;883&quot; data-start=&quot;841&quot;&gt;ESP32 ADC Pin (e.g., GPIO 34, GPIO 35)&lt;/strong&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="450" y="310" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-54" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.electro-mechanical.loudspeaker;" vertex="1" parent="1">
+          <mxGeometry x="145" y="395" width="25" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-63" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-55" target="bhfImXdg9pNfIHxLkrQA-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-55" target="bhfImXdg9pNfIHxLkrQA-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.289;entryY=1.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-55" target="bhfImXdg9pNfIHxLkrQA-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-55" value="&#xa;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;AUDIO AMPLIFIER&lt;/span&gt;&#xa;&#xa;" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.abstract.amplifier;" vertex="1" parent="1">
+          <mxGeometry x="490" y="370" width="90" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-57" value="PASSIVE&amp;nbsp;&lt;div&gt;SPEAKER&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="122.5" y="440" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-60" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.922;entryY=0.54;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="bhfImXdg9pNfIHxLkrQA-55">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="420" as="sourcePoint" />
+            <mxPoint x="790" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-62" value="&lt;strong data-start=&quot;473&quot; data-end=&quot;521&quot;&gt;ESP32 I2S Output (DAC Pin, e.g., GPIO 25/26)&lt;/strong&gt; → &lt;strong data-start=&quot;524&quot; data-end=&quot;558&quot;&gt;Audio Amplifier Input (L/R in)&lt;/strong&gt;" style="text;whiteSpace=wrap;html=1;rotation=270;" vertex="1" parent="1">
+          <mxGeometry x="620" y="275" width="460" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-64" value="&lt;strong data-start=&quot;565&quot; data-end=&quot;591&quot;&gt;Audio Amplifier Output&lt;/strong&gt; → &lt;strong data-start=&quot;594&quot; data-end=&quot;613&quot;&gt;Speaker + and -&lt;/strong&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="460" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-68" value="&lt;li data-start=&quot;618&quot; data-end=&quot;679&quot;&gt;&lt;strong data-start=&quot;620&quot; data-end=&quot;648&quot;&gt;Audio Amplifier VCC (5V)&lt;/strong&gt; → &lt;strong data-start=&quot;651&quot; data-end=&quot;677&quot;&gt;ESP32 5V / External 5V&lt;/strong&gt;&lt;/li&gt;&lt;li data-start=&quot;682&quot; data-end=&quot;709&quot;&gt;&lt;/li&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="290" width="140" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-71" value="&lt;strong data-start=&quot;684&quot; data-end=&quot;691&quot;&gt;GND&lt;/strong&gt; → &lt;strong data-start=&quot;694&quot; data-end=&quot;707&quot;&gt;ESP32 GND&lt;/strong&gt;" style="text;whiteSpace=wrap;html=1;rotation=270;" vertex="1" parent="1">
+          <mxGeometry x="360" y="190" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-79" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-72" target="bhfImXdg9pNfIHxLkrQA-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="365" />
+              <mxPoint x="390" y="250" />
+              <mxPoint x="395" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-72" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.electro-mechanical.loudspeaker;" vertex="1" parent="1">
+          <mxGeometry x="401" y="340" width="25" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-73" value="ACTIVE&amp;nbsp;&lt;div&gt;SPEAKER&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="370" y="383" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-76" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.706;exitY=1.067;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.54;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-1" target="bhfImXdg9pNfIHxLkrQA-72">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="350" as="sourcePoint" />
+            <mxPoint x="410" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-5" target="bhfImXdg9pNfIHxLkrQA-77">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="240" as="sourcePoint" />
+            <mxPoint x="690" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-77" value="&lt;font style=&quot;font-size: 8px; color: rgb(0, 0, 0);&quot;&gt;ESP32 Audio Output → Speaker&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="465" y="200" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-80" value="&lt;strong data-end=&quot;1146&quot; data-start=&quot;1126&quot;&gt;Speaker VCC (5V)&lt;/strong&gt; → &lt;strong data-end=&quot;1175&quot; data-start=&quot;1149&quot;&gt;ESP32 5V / External 5V&lt;/strong&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="122.5" y="340" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-82" value="" style="endArrow=none;html=1;rounded=0;exitX=0.96;exitY=0.54;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-72">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="445" y="380" as="sourcePoint" />
+            <mxPoint x="20" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-83" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="20" y="370" as="sourcePoint" />
+            <mxPoint x="20" y="20" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-87" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="20" y="20" as="sourcePoint" />
+            <mxPoint x="440" y="20" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-90" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="bhfImXdg9pNfIHxLkrQA-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="20" as="sourcePoint" />
+            <mxPoint x="515" y="10" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
