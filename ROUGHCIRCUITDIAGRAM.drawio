@@ -9,20 +9,43 @@
         </mxCell>
         <mxCell id="bhfImXdg9pNfIHxLkrQA-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="660" y="100" as="targetPoint" />
+            <mxPoint x="650" y="110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="bhfImXdg9pNfIHxLkrQA-1" value="ESP32" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#3A5431;fontColor=#ffffff;fontStyle=7" vertex="1" parent="1">
-          <mxGeometry x="350" y="70" width="180" height="60" as="geometry" />
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-1" value="ESP32" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;fontStyle=7" vertex="1" parent="1">
+          <mxGeometry x="350" y="80" width="180" height="60" as="geometry" />
         </mxCell>
         <mxCell id="bhfImXdg9pNfIHxLkrQA-3" value="CAMERA MODULE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;fontStyle=5;fontFamily=Helvetica;textShadow=1;fontColor=#FFFFFF;" vertex="1" parent="1">
-          <mxGeometry x="110" y="70" width="130" height="60" as="geometry" />
+          <mxGeometry x="110" y="80" width="130" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="bhfImXdg9pNfIHxLkrQA-4" value="SERVO&amp;nbsp;&lt;div&gt;MOTOR&lt;/div&gt;" style="verticalLabelPosition=middle;shadow=0;dashed=0;align=center;html=1;verticalAlign=middle;strokeWidth=1;shape=ellipse;aspect=fixed;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="650" y="60" width="80" height="80" as="geometry" />
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-4" value="SERVO&amp;nbsp;&lt;div&gt;MOTOR&lt;/div&gt;" style="verticalLabelPosition=middle;shadow=0;dashed=0;align=center;html=1;verticalAlign=middle;strokeWidth=1;shape=ellipse;aspect=fixed;fontSize=12;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" vertex="1" parent="1">
+          <mxGeometry x="650" y="70" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-5" target="bhfImXdg9pNfIHxLkrQA-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bhfImXdg9pNfIHxLkrQA-5" target="bhfImXdg9pNfIHxLkrQA-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="575" y="240" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="bhfImXdg9pNfIHxLkrQA-5" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;fillColor=strokeColor;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.electrical.miscellaneous.monocell_battery;" vertex="1" parent="1">
-          <mxGeometry x="390" y="210" width="110" height="60" as="geometry" />
+          <mxGeometry x="385" y="210" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-10" value="Power Supply (5V, GND)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="370" y="270" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-11" value="&lt;li data-end=&quot;1162&quot; data-start=&quot;1142&quot;&gt;&lt;strong data-end=&quot;1150&quot; data-start=&quot;1144&quot;&gt;5V&lt;/strong&gt; → &lt;strong data-end=&quot;1160&quot; data-start=&quot;1153&quot;&gt;VCC&lt;/strong&gt;&lt;/li&gt;&lt;li data-end=&quot;1186&quot; data-start=&quot;1165&quot;&gt;&lt;strong data-end=&quot;1174&quot; data-start=&quot;1167&quot;&gt;GND&lt;/strong&gt; → &lt;strong data-end=&quot;1184&quot; data-start=&quot;1177&quot;&gt;GND&lt;/strong&gt;&lt;/li&gt;&lt;li data-end=&quot;1224&quot; data-start=&quot;1189&quot;&gt;&lt;strong data-end=&quot;1200&quot; data-start=&quot;1191&quot;&gt;TX/RX&lt;/strong&gt; → &lt;strong data-end=&quot;1222&quot; data-start=&quot;1203&quot;&gt;ESP32 UART Pins&lt;/strong&gt;&lt;/li&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="23" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-12" value="&lt;li data-end=&quot;1361&quot; data-start=&quot;1335&quot;&gt;&lt;strong data-end=&quot;1343&quot; data-start=&quot;1337&quot;&gt;5V&lt;/strong&gt; → &lt;strong data-end=&quot;1359&quot; data-start=&quot;1346&quot;&gt;Servo VCC&lt;/strong&gt;&lt;/li&gt;&lt;li data-end=&quot;1391&quot; data-start=&quot;1364&quot;&gt;&lt;strong data-end=&quot;1373&quot; data-start=&quot;1366&quot;&gt;GND&lt;/strong&gt; → &lt;strong data-end=&quot;1389&quot; data-start=&quot;1376&quot;&gt;Servo GND&lt;/strong&gt;&lt;/li&gt;&lt;li data-end=&quot;1453&quot; data-start=&quot;1394&quot;&gt;&lt;strong data-end=&quot;1428&quot; data-start=&quot;1396&quot;&gt;GPIO (PWM Pin D9, D10, etc.)&lt;/strong&gt; → &lt;strong data-end=&quot;1451&quot; data-start=&quot;1431&quot;&gt;Servo Signal Pin&lt;/strong&gt;&lt;/li&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="507" y="10" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-15" value="&lt;strong data-end=&quot;1566&quot; data-start=&quot;1560&quot;&gt;5V&lt;/strong&gt; → &lt;strong data-end=&quot;1582&quot; data-start=&quot;1569&quot;&gt;ESP32 VCC&lt;/strong&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="440" y="158" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bhfImXdg9pNfIHxLkrQA-16" value="&lt;strong data-end=&quot;1596&quot; data-start=&quot;1589&quot;&gt;GND&lt;/strong&gt; → &lt;strong data-end=&quot;1624&quot; data-start=&quot;1599&quot;&gt;Servo GND&lt;/strong&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="520" y="240" width="130" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
