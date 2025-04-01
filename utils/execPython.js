@@ -18,6 +18,9 @@
 const { exec } = require("child_process");
 
 function execPython(scriptPath) {
+    
+    console.log(scriptPath)
+
     return new Promise((resolve, reject) => {
         console.log(`🚀 Running Python script: ${scriptPath}`); // ✅ Log script execution
 

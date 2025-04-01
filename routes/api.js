@@ -39,7 +39,8 @@
 const express = require("express");
 const router = express.Router();
 const { execPython } = require("../utils/execPython");
-const redisClient = require("../services/redisService");
+const { redisClient } = require("../services/redisService");
+
 
 //  Test Route (Check if API is working)
 router.get("/", (req, res) => {
@@ -49,16 +50,28 @@ router.get("/", (req, res) => {
 // API 1: ESP32 Requests Execution 
 router.post("/execute", async (req, res) => {
     try {
-        const { scriptname } = req.body;
+        const {scriptname} = req.body;
+
+        console.log(scriptname);
+        console.log(Object.keys(redisClient));
+
         if (!scriptname) return res.status(400).json({ error: "Script name required" });
 
         // Rate Limiting (Preventing too many requests here )
         const rateLimitKey = `rate_limit:esp32`;
+        // const val = await redisClient.get(rateLimitKey);
+        // if (val) {
+        //     console.log("Value retrieved: ", val);
+        // } else {
+        //     console.log("Key does not exist!!");
+        // }
+        
+
         const isLimited = await redisClient.get(rateLimitKey);
         if (isLimited) {
             return res.status(429).json({ message: "Too many requests. Try again later." });
         }
-        redisClient.setex(rateLimitKey, 2, "1"); // setting a 2-second limit key 
+        await redisClient.setEx(rateLimitKey, 2, "1"); // setting a 2-second limit key 
 
         // Execution of Python script
         const result = await execPython(`./scripts/${scriptname}.py`);

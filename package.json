@@ -16,5 +16,8 @@
     "mqtt": "^5.10.4",
     "redis": "^4.7.0",
     "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
