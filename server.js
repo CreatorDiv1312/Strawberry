@@ -27,6 +27,7 @@ const express = require("express");
 const apiRoutes = require("./routes/api"); 
 const { connectMQTT } = require("./services/mqttService"); 
 const { initializeRedis } = require("./services/redisService"); 
+const dbRoutes = require("./routes/api")
 
 const app = express(); 
 const PORT = process.env.PORT || 5000;
@@ -41,6 +42,7 @@ app.get("/", (req, res) => {
 
 // ✅ API Routes 
 app.use("/api", apiRoutes);  
+app.use("/db", dbRoutes)
 
 // Start MQTT Connection 
 connectMQTT(); 

@@ -40,8 +40,7 @@ const express = require("express");
 const router = express.Router();
 const { execPython } = require("../utils/execPython");
 const { redisClient } = require("../services/redisService");
-
-
+const { startDB, createTable , insertTable , selectTable ,closeDB } = require("../services/sqliteServices");
 //  Test Route (Check if API is working)
 router.get("/", (req, res) => {
     res.send("✅ API is working...");
@@ -52,8 +51,8 @@ router.post("/execute", async (req, res) => {
     try {
         const {scriptname} = req.body;
 
-        console.log(scriptname);
-        console.log(Object.keys(redisClient));
+        // console.log(scriptname);
+        // console.log(Object.keys(redisClient));
 
         if (!scriptname) return res.status(400).json({ error: "Script name required" });
 
@@ -81,6 +80,28 @@ router.post("/execute", async (req, res) => {
         return res.status(500).json({ success: false, error: error.message });
     }
 });
+
+
+router.get("/start-db",async(req,res)=>{
+    try{
+        console.log("DB start route executed");
+        await startDB();
+        res.status(200).send("DB started successfully")
+    } catch (err) {
+        res.status(500).send("DB failed to start :", err.message)
+    }
+})
+router.get("/close",async (req,res)=>{
+    try{
+        console.log("Close DB route hitted!!");
+        await closeDB();
+        res.status(200).send("DB closed successfully");
+    } catch (err) {
+        res.status(500).send("DB failed to close :", err)
+    }
+})
+
+
 
 // ✅ API 2: Backend Termination
 router.post("/shutdown", (req, res) => {
