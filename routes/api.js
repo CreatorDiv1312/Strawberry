@@ -39,6 +39,7 @@
 const express = require("express");
 const router = express.Router();
 const { execPython } = require("../utils/execPython");
+const { searchFile } = require("../utils/searchFile")
 const { redisClient } = require("../services/redisService");
 const { startDB, closeDB } = require("../services/sqliteServices");
 const sendMail = require("../services/nodemailerService")
@@ -66,7 +67,7 @@ router.get("/", (req, res) => {
 
     router.post("/execute", async (req, res) => {
     try {
-        const { scriptnames } = req.body; // Accept an array of script names
+        const { scriptnames } = req.body || ['test0']; // Accept an array of script names
         if (!Array.isArray(scriptnames) || scriptnames.length === 0) {
             return res.status(400).json({ error: "Script names required as an array" });
         }
@@ -80,7 +81,11 @@ router.get("/", (req, res) => {
 
         const results = [];
         for (const scriptname of scriptnames) {
-            const result = await execPython(`./scripts/${scriptname}.py`);
+            const path = await searchFile('./scripts' , `${scriptname}.py`)
+            console.log(path)
+
+
+            const result = await execPython(path);
             results.push({ script: scriptname, result });
         }
 

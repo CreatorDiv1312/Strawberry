@@ -28,6 +28,8 @@ const apiRoutes = require("./routes/api");
 const { connectMQTT } = require("./services/mqttService"); 
 const { initializeRedis } = require("./services/redisService"); 
 const dbRoutes = require("./routes/api")
+const { execPython } = require("./utils/execPython")
+const {  searchFile } = require("./utils/searchFile")
 
 //For Camera imports
 const multer = require('multer');
@@ -72,9 +74,28 @@ const mainUpload = multer({
 app.use(express.json()); 
 
 // ✅ Default Route (Fix for "Cannot GET /")
-app.get("/", (req, res) => {
-    res.send("Server is running...");
-});
+app.get("/", async (req, res) => {
+    
+
+        try {
+            const  scriptname  =  "test0";
+
+
+                const path = await searchFile('./scripts' , `${scriptname}.py`)
+                console.log(path)
+    
+    
+                const result = await execPython(path);
+
+    
+            return res.json({ success: true, result });
+        } catch (error) {
+            return res.status(500).json({ success: false, error: error.message });
+        }
+    });
+    //  res.send("Server is running...");    
+    
+
 
 //Serving the latest image
 

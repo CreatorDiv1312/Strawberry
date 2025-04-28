@@ -1,0 +1,47 @@
+[2025-04-10 11:41:11.983216] Krsnam_activated
+[2025-04-10 11:41:18.535092] Heard : this is Genesis is this Genesis
+[2025-04-10 11:41:20.602787] Responded: I am still learning
+[2025-04-10 11:41:27.091832] Heard : hello am I audible to
+[2025-04-10 11:41:29.099138] Responded: I am still learning
+[2025-04-10 11:41:33.346410] Heard : exit
+[2025-04-10 11:41:35.170528] Responded: Shutting down
+[2025-04-10 11:41:35.171501] Genesis shoutdown command has been initiated.
+[2025-04-10 12:20:02.759902] Krsnam_activated
+[2025-04-10 12:23:48.282409] Krsnam_activated
+[2025-04-10 12:24:38.507152] Krsnam_activated
+[2025-04-10 12:25:29.186748] Krsnam_activated
+[2025-04-10 12:26:07.856595] Krsnam_activated
+[2025-04-10 12:26:36.734385] Krsnam_activated
+[2025-04-10 13:21:46.387564] Krsnam_activated
+[2025-04-10 13:22:06.538755] Heard : can you hear my voice up
+[2025-04-10 13:22:08.556593] Responded: I am still learning
+[2025-04-10 13:22:14.345114] Heard : exit I say exit
+[2025-04-10 13:22:16.328188] Responded: Shutting down
+[2025-04-10 13:22:16.329183] Genesis shoutdown command has been initiated.
+[2025-04-10 13:23:05.608857] Krsnam_activated
+[2025-04-10 13:23:24.783969] Heard :  
+[2025-04-10 13:23:26.830230] Responded: I am still learning
+[2025-04-10 13:23:31.394321] Heard :  
+[2025-04-10 13:23:33.388530] Responded: I am still learning
+[2025-04-10 13:23:41.165672] Heard : exit
+[2025-04-10 13:23:43.004277] Responded: Shutting down
+[2025-04-10 13:23:43.006038] Genesis shoutdown command has been initiated.
+[2025-04-10 15:28:43.449395] Krsnam_activated
+[2025-04-10 15:37:58.681738] Krsnam_activated
+[2025-04-10 15:38:56.861862] Krsnam_activated
+[2025-04-10 15:40:58.080897] Krsnam_activated
+[2025-04-10 15:44:55.407989] Krsnam_activated
+[2025-04-10 15:46:17.036554] Krsnam_activated
+[2025-04-10 15:46:42.696077] Heard : exit
+[2025-04-10 15:46:44.516837] Responded: Shutting down
+[2025-04-10 15:46:44.517842] Genesis shoutdown command has been initiated.
+[2025-04-10 15:51:58.356175] Krsnam_activated
+[2025-04-10 15:52:32.786586] Heard : exit words and like the exit as it then but exit exit exit
+[2025-04-10 15:52:34.660988] Responded: Shutting down
+[2025-04-10 15:52:34.661998] Genesis shoutdown command has been initiated.
+[2025-04-10 15:54:45.016436] Krsnam_activated
+[2025-04-10 15:55:12.588228] Heard : i love how and
+[2025-04-10 15:55:14.615815] Responded: I am still learning
+[2025-04-10 15:55:29.900188] Heard : exit exit exam
+[2025-04-10 15:55:31.724034] Responded: Shutting down
+[2025-04-10 15:55:31.725050] Genesis shoutdown command has been initiated.
