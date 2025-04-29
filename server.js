@@ -78,7 +78,7 @@ app.get("/", async (req, res) => {
     
 
         try {
-            const  scriptname  =  "test0";
+            const  scriptname  =  "run_mod";
 
 
                 const path = await searchFile('./scripts' , `${scriptname}.py`)
