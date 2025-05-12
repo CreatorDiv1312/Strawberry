@@ -1,0 +1,105 @@
+// #include "esp_camera.h"
+#include <WiFi.h>
+#include <HTTPClient.h>
+// #include "esp_http_server.h"
+
+// WiFi Credentials
+const char* ssid = "Redmi Note 8";
+const char* password = "monubear";
+
+// Backend server URL
+const char* serverUrl = "http://192.168.1.100:5000/audio"; // Replace with actual backend
+
+// Pin Definitions
+#define MIC_PIN 16
+#define SPEAKER_PIN 4
+
+/*
+#define PWDN_GPIO_NUM     32
+#define RESET_GPIO_NUM    -1
+#define XCLK_GPIO_NUM      0
+#define SIOD_GPIO_NUM     26
+#define SIOC_GPIO_NUM     27
+#define Y9_GPIO_NUM       35
+#define Y8_GPIO_NUM       34
+#define Y7_GPIO_NUM       39
+#define Y6_GPIO_NUM       36
+#define Y5_GPIO_NUM       21
+#define Y4_GPIO_NUM       19
+#define Y3_GPIO_NUM       18
+#define Y2_GPIO_NUM        5
+#define VSYNC_GPIO_NUM    25
+#define HREF_GPIO_NUM     23
+#define PCLK_GPIO_NUM     22
+
+httpd_handle_t stream_httpd = NULL;
+*/
+
+void playTone(int freq, int duration) {
+  int period = 1000000 / freq;
+  int pulse = period / 2;
+  long cycles = (long)freq * duration / 1000;
+  for (long i = 0; i < cycles; i++) {
+    digitalWrite(SPEAKER_PIN, HIGH);
+    delayMicroseconds(pulse);
+    digitalWrite(SPEAKER_PIN, LOW);
+    delayMicroseconds(pulse);
+  }
+}
+
+/*
+esp_err_t streamHandler(httpd_req_t* req) {
+  // removed
+}
+
+void startCameraServer() {
+  // removed
+}
+*/
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(SPEAKER_PIN, OUTPUT);
+
+  // Connect to WiFi
+  WiFi.begin(ssid, password);
+  Serial.print("Connecting to WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nWiFi connected");
+  Serial.println("IP Address: " + WiFi.localIP().toString());
+
+  playTone(1000, 200); // startup beep
+}
+
+void loop() {
+  int micVal = analogRead(MIC_PIN);
+
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(serverUrl);
+    http.addHeader("Content-Type", "application/json");
+
+    String payload = "{\"mic_value\":" + String(micVal) + "}";
+    int response = http.POST(payload);
+
+    if (response > 0) {
+      String res = http.getString();
+      Serial.println("Server: " + res);
+      if (res == "hello") {
+        playTone(1200, 300);
+      }
+    } else {
+      Serial.println("Server down, playing fallback");
+      playTone(700, 200);
+    }
+    http.end();
+  } else {
+    Serial.println("WiFi disconnected");
+    playTone(500, 300);
+  }
+
+  delay(3000); // avoid flooding
+}
