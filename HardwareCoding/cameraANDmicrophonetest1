@@ -1,0 +1,66 @@
+#include "esp_system.h"
+#include "driver/dac.h"
+#include "freertos/task.h"
+#include "freertos/FreeRTOS.h"
+
+void setup(){
+  Serial.begin(115200);  // setting up the serial monitor baud rate to star with 
+
+  // initialising dac1 GPIO 25
+  dac_output_enable (DAC_CHANNEL_1);
+    // dac  is taking form GPIO 25
+    Serial.println("speaker test activated");
+    for(int i = 0; i < 4; i++){
+      playTone(400);
+      delay(3000);
+      stopTone();
+      delay(3000);
+
+    }
+}
+
+
+void loop(){
+  // inientionally left blank
+}
+
+
+void playTone(int freq){
+  int Period = 1000/freq;
+  int halfPeriod = Period/2;
+  for(int i = 0; i < freq; i++){
+    dac_output_voltage(DAC_CHANNEL_1,200);
+    delayMicroseconds(halfPeriod);
+    dac_output_voltage(DAC_CHANNEL_1,50);
+    delayMicroseconds(halfPeriod);
+
+  }
+}
+
+
+
+//stop tone
+
+void stopTone(){
+  dac_output_voltage(DAC_CHANNEL_1,0);
+}
+
+
+// //   MIC TEST 
+
+
+// #define MIC_PIN 34 // this can change as per mic pin slot
+
+// // void setup(){
+// //   Serial.begin(115200);
+// //   delay(1000);
+// //   Serial.println("mic test is ready to go");
+// // }
+
+
+// // void lop(){
+// //   int mic_value = analogRead(MIC_PIN);
+// //   Serial.println(mic_value);
+// //   delay(2000);
+
+// // }
