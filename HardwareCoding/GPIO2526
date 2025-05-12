@@ -1,0 +1,140 @@
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include  <Audio.h>
+#include "SPIFFS.h"
+#include "esp_camera.h"
+
+// Mic & Audio
+#define MIC_PIN 34
+Audio audio;
+
+// Camera config
+#define PWDN_GPIO_NUM    -1
+#define RESET_GPIO_NUM   -1
+#define XCLK_GPIO_NUM     0
+#define SIOD_GPIO_NUM    26
+#define SIOC_GPIO_NUM    27
+#define Y9_GPIO_NUM      35
+#define Y8_GPIO_NUM      34
+#define Y7_GPIO_NUM      39
+#define Y6_GPIO_NUM      36
+#define Y5_GPIO_NUM      21
+#define Y4_GPIO_NUM      19
+#define Y3_GPIO_NUM      18
+#define Y2_GPIO_NUM       5
+#define VSYNC_GPIO_NUM   25
+#define HREF_GPIO_NUM    23
+#define PCLK_GPIO_NUM    22
+
+// WiFi Credentials
+const char* ssid = "Redmi Note 8";
+const char* password = "12345678";
+
+// Backend URLs
+const char* backend_audio_url = "http://your-node-backend/audio"; // Node.js audio stream
+const char* mic_upload_url = "http://your-node-backend/mic";      // Mic data upload
+const char* fallback_audio_url = "https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav";
+
+bool sendMicToServer(int value) {
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(mic_upload_url);
+    http.addHeader("Content-Type", "application/json");
+    String body = "{\"mic_value\": " + String(value) + "}";
+    int httpCode = http.POST(body);
+    http.end();
+    return httpCode == 200;
+  }
+  return false;
+}
+
+void streamCamera() {
+  camera_config_t config;
+  config.ledc_channel = LEDC_CHANNEL_0;
+  config.ledc_timer = LEDC_TIMER_0;
+  config.pin_d0 = Y2_GPIO_NUM;
+  config.pin_d1 = Y3_GPIO_NUM;
+  config.pin_d2 = Y4_GPIO_NUM;
+  config.pin_d3 = Y5_GPIO_NUM;
+  config.pin_d4 = Y6_GPIO_NUM;
+  config.pin_d5 = Y7_GPIO_NUM;
+  config.pin_d6 = Y8_GPIO_NUM;
+  config.pin_d7 = Y9_GPIO_NUM;
+  config.pin_xclk = XCLK_GPIO_NUM;
+  config.pin_pclk = PCLK_GPIO_NUM;
+  config.pin_vsync = VSYNC_GPIO_NUM;
+  config.pin_href = HREF_GPIO_NUM;
+  config.pin_sscb_sda = SIOD_GPIO_NUM;
+  config.pin_sscb_scl = SIOC_GPIO_NUM;
+  config.pin_pwdn = PWDN_GPIO_NUM;
+  config.pin_reset = RESET_GPIO_NUM;
+  config.xclk_freq_hz = 20000000;
+  config.pixel_format = PIXFORMAT_JPEG;
+  
+  if(psramFound()){
+    config.frame_size = FRAMESIZE_QVGA;
+    config.jpeg_quality = 10;
+    config.fb_count = 2;
+  } else {
+    config.frame_size = FRAMESIZE_QQVGA;
+    config.jpeg_quality = 12;
+    config.fb_count = 1;
+  }
+
+  // Init Camera
+  esp_err_t err = esp_camera_init(&config);
+  if (err != ESP_OK) {
+    Serial.printf("Camera init failed with error 0x%x", err);
+    return;
+  }
+
+  Serial.println("Camera stream available at:");
+  Serial.println(WiFi.localIP()); // Default ESP32 stream IP
+}
+
+void playAudioWithFallback() {
+  Serial.println("Trying to play from backend...");
+
+  if (audio.connecttohost(backend_audio_url)) {
+    Serial.println("Playing from backend...");
+  } else {
+    Serial.println("Backend down, playing fallback...");
+    audio.connecttohost(fallback_audio_url);
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
+  Serial.println("\nWiFi connected!");
+
+  audio.setPinout(26, 25, 22); // I2S output pins
+  audio.setVolume(20);
+
+  SPIFFS.begin(true);
+
+  streamCamera(); // start cam server
+}
+
+void loop() {
+  int micVal = analogRead(MIC_PIN);
+  Serial.println(micVal);
+
+  if (micVal > 1800) {
+    bool sent = sendMicToServer(micVal);
+    if (sent) {
+      playAudioWithFallback();
+    } else {
+      Serial.println("Mic data not sent. Backend unavailable.");
+      playAudioWithFallback(); // Still play fallback
+    }
+    delay(7000);
+  }
+
+  audio.loop();
+  delay(100);
+}
