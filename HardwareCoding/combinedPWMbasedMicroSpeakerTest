@@ -1,0 +1,39 @@
+
+
+#define SPEAKER_PIN 4
+#define MIC_PIN 16
+
+
+void setup(){
+  Serial.begin(115200);
+  pinMode(SPEAKER_PIN, OUTPUT);
+  Serial.println("speaker and mic test started");
+  for(int i =0; i < 2; i++){
+    playTone(1000,5000);
+    delay(500);
+    playTone(1000,5000);
+    delay(500);
+  }
+  Serial.println("speaker test done, mic reading started ");
+}
+
+
+
+void loop(){
+  int mic_value = analogRead(MIC_PIN);
+  Serial.println(mic_value);
+  delay(500);
+
+}
+
+void playTone(int freq, int duration){
+  int period = 1000/ freq;
+  int pulse = period/2;
+  int cycle = (long)freq*duration/1000;
+  for(long i = 0; i < cycle; i++){
+      digitalWrite(SPEAKER_PIN, HIGH);
+      delayMicroseconds(pulse);
+      digitalWrite(SPEAKER_PIN,LOW);
+      delayMicroseconds(pulse);
+  }
+}
