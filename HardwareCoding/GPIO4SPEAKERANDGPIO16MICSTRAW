@@ -1,0 +1,321 @@
+// #include "esp_camera.h"
+// #include <WiFi.h>
+// #include <HTTPClient.h>
+// #include "esp_http_server.h"
+
+// // WiFi Credentials
+// const char* ssid = "Redmi Note 8";
+// const char* password = "monubear";
+
+// // Backend server URL
+// const char* serverUrl = "http://192.168.1.100:5000/audio"; // Replace with actual backend
+
+// // Pin Definitions
+// #define MIC_PIN 16
+// #define SPEAKER_PIN 4
+
+// // CAMERA_MODEL_AI_THINKER pins
+// #define PWDN_GPIO_NUM     32
+// #define RESET_GPIO_NUM    -1
+// #define XCLK_GPIO_NUM      0
+// #define SIOD_GPIO_NUM     26
+// #define SIOC_GPIO_NUM     27
+// #define Y9_GPIO_NUM       35
+// #define Y8_GPIO_NUM       34
+// #define Y7_GPIO_NUM       39
+// #define Y6_GPIO_NUM       36
+// #define Y5_GPIO_NUM       21
+// #define Y4_GPIO_NUM       19
+// #define Y3_GPIO_NUM       18
+// #define Y2_GPIO_NUM        5
+// #define VSYNC_GPIO_NUM    25
+// #define HREF_GPIO_NUM     23
+// #define PCLK_GPIO_NUM     22
+
+// httpd_handle_t stream_httpd = NULL;
+
+// void playTone(int freq, int duration) {
+//   int period = 1000000 / freq;
+//   int pulse = period / 2;
+//   long cycles = (long)freq * duration / 1000;
+//   for (long i = 0; i < cycles; i++) {
+//     digitalWrite(SPEAKER_PIN, HIGH);
+//     delayMicroseconds(pulse);
+//     digitalWrite(SPEAKER_PIN, LOW);
+//     delayMicroseconds(pulse);
+//   }
+// }
+
+// esp_err_t streamHandler(httpd_req_t* req) {
+//   camera_fb_t * fb = NULL;
+//   esp_err_t res = ESP_OK;
+//   char * part_buf[64];
+
+//   res = httpd_resp_set_type(req, "multipart/x-mixed-replace; boundary=frame");
+//   if (res != ESP_OK) return res;
+
+//   while (true) {
+//     fb = esp_camera_fb_get();
+//     if (!fb) {
+//       Serial.println("Camera capture failed");
+//       return ESP_FAIL;
+//     }
+
+//     char header[64];
+//     snprintf(header, sizeof(header),
+//              "--frame\r\nContent-Type: image/jpeg\r\nContent-Length: %u\r\n\r\n",
+//              fb->len);
+
+//     res = httpd_resp_send_chunk(req, header, strlen(header));
+//     if (res == ESP_OK) {
+//       res = httpd_resp_send_chunk(req, (const char *)fb->buf, fb->len);
+//     }
+
+//     esp_camera_fb_return(fb);
+//     if (res != ESP_OK) break;
+
+//     res = httpd_resp_send_chunk(req, "\r\n", 2);
+//     if (res != ESP_OK) break;
+
+//     delay(100); // adjust for framerate
+//   }
+
+//   return res;
+// }
+
+// void startCameraServer() {
+//   httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+//   config.server_port = 80;
+
+//   httpd_uri_t stream_uri = {
+//     .uri       = "/stream",
+//     .method    = HTTP_GET,
+//     .handler   = streamHandler,
+//     .user_ctx  = NULL
+//   };
+
+//   if (httpd_start(&stream_httpd, &config) == ESP_OK) {
+//     httpd_register_uri_handler(stream_httpd, &stream_uri);
+//   }
+// }
+
+// void setup() {
+//   Serial.begin(115200);
+//   pinMode(SPEAKER_PIN, OUTPUT);
+
+//   // Connect to WiFi
+//   WiFi.begin(ssid, password);
+//   Serial.print("Connecting to WiFi");
+//   while (WiFi.status() != WL_CONNECTED) {
+//     delay(500);
+//     Serial.print(".");
+//   }
+//   Serial.println("\nWiFi connected");
+
+//   // Configure Camera
+//   camera_config_t config;
+//   config.ledc_channel = LEDC_CHANNEL_0;
+//   config.ledc_timer   = LEDC_TIMER_0;
+//   config.pin_d0       = Y2_GPIO_NUM;
+//   config.pin_d1       = Y3_GPIO_NUM;
+//   config.pin_d2       = Y4_GPIO_NUM;
+//   config.pin_d3       = Y5_GPIO_NUM;
+//   config.pin_d4       = Y6_GPIO_NUM;
+//   config.pin_d5       = Y7_GPIO_NUM;
+//   config.pin_d6       = Y8_GPIO_NUM;
+//   config.pin_d7       = Y9_GPIO_NUM;
+//   config.pin_xclk     = XCLK_GPIO_NUM;
+//   config.pin_pclk     = PCLK_GPIO_NUM;
+//   config.pin_vsync    = VSYNC_GPIO_NUM;
+//   config.pin_href     = HREF_GPIO_NUM;
+//   config.pin_sscb_sda = SIOD_GPIO_NUM;
+//   config.pin_sscb_scl = SIOC_GPIO_NUM;
+//   config.pin_pwdn     = PWDN_GPIO_NUM;
+//   config.pin_reset    = RESET_GPIO_NUM;
+//   config.xclk_freq_hz = 20000000;
+//   config.pixel_format = PIXFORMAT_JPEG;
+
+//   if (psramFound()) {
+//     config.frame_size = FRAMESIZE_QVGA;
+//     config.jpeg_quality = 10;
+//     config.fb_count = 2;
+//   } else {
+//     config.frame_size = FRAMESIZE_QVGA;
+//     config.jpeg_quality = 12;
+//     config.fb_count = 1;
+//   }
+
+//   // Initialize camera
+//   esp_err_t err = esp_camera_init(&config);
+//   if (err != ESP_OK) {
+//     Serial.printf("Camera init failed with error 0x%x", err);
+//     return;
+//   }
+
+//   startCameraServer();
+//   Serial.println("Camera stream ready at: http://<esp32-ip>/stream");
+
+//   playTone(1000, 200); // startup beep
+//   delay(3000);
+// }
+
+// void loop() {
+//   int micVal = analogRead(MIC_PIN);
+
+//   if (WiFi.status() == WL_CONNECTED) {
+//     HTTPClient http;
+//     http.begin(serverUrl);
+//     http.addHeader("Content-Type", "application/json");
+
+//     String payload = "{\"mic_value\":" + String(micVal) + "}";
+//     int response = http.POST(payload);
+
+//     if (response > 0) {
+//       String res = http.getString();
+//       Serial.println("Server: " + res);
+//       if (res == "hello") {
+//         playTone(1200, 300);
+//       }
+//     } else {
+//       Serial.println("Server down, playing fallback");
+//       playTone(700, 200);
+//     }
+//     http.end();
+//   } else {
+//     Serial.println("WiFi disconnected");
+//     playTone(500, 300);
+//   }
+
+//   delay(3000); // avoid flooding
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #include "esp_camera.h"
+#include <WiFi.h>
+#include <HTTPClient.h>
+// #include "esp_http_server.h"
+
+// WiFi Credentials
+const char* ssid = "Redmi Note 8";
+const char* password = "monubear";
+
+// Backend server URL
+const char* serverUrl = "http://192.168.1.100:5000/audio"; // Replace with actual backend
+
+// Pin Definitions
+#define MIC_PIN 16
+#define SPEAKER_PIN 4
+
+/*
+#define PWDN_GPIO_NUM     32
+#define RESET_GPIO_NUM    -1
+#define XCLK_GPIO_NUM      0
+#define SIOD_GPIO_NUM     26
+#define SIOC_GPIO_NUM     27
+#define Y9_GPIO_NUM       35
+#define Y8_GPIO_NUM       34
+#define Y7_GPIO_NUM       39
+#define Y6_GPIO_NUM       36
+#define Y5_GPIO_NUM       21
+#define Y4_GPIO_NUM       19
+#define Y3_GPIO_NUM       18
+#define Y2_GPIO_NUM        5
+#define VSYNC_GPIO_NUM    25
+#define HREF_GPIO_NUM     23
+#define PCLK_GPIO_NUM     22
+
+httpd_handle_t stream_httpd = NULL;
+*/
+
+void playTone(int freq, int duration) {
+  int period = 1000000 / freq;
+  int pulse = period / 2;
+  long cycles = (long)freq * duration / 1000;
+  for (long i = 0; i < cycles; i++) {
+    digitalWrite(SPEAKER_PIN, HIGH);
+    delayMicroseconds(pulse);
+    digitalWrite(SPEAKER_PIN, LOW);
+    delayMicroseconds(pulse);
+  }
+}
+
+/*
+esp_err_t streamHandler(httpd_req_t* req) {
+  // removed
+}
+
+void startCameraServer() {
+  // removed
+}
+*/
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(SPEAKER_PIN, OUTPUT);
+
+  // Connect to WiFi
+  WiFi.begin(ssid, password);
+  Serial.print("Connecting to WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nWiFi connected");
+  Serial.println("IP Address: " + WiFi.localIP().toString());
+
+  playTone(1000, 200); // startup beep
+}
+
+void loop() {
+  int micVal = analogRead(MIC_PIN);
+
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(serverUrl);
+    http.addHeader("Content-Type", "application/json");
+
+    String payload = "{\"mic_value\":" + String(micVal) + "}";
+    int response = http.POST(payload);
+
+    if (response > 0) {
+      String res = http.getString();
+      Serial.println("Server: " + res);
+      if (res == "hello") {
+        playTone(1200, 300);
+      }
+    } else {
+      Serial.println("Server down, playing fallback");
+      playTone(700, 200);
+    }
+    http.end();
+  } else {
+    Serial.println("WiFi disconnected");
+    playTone(500, 300);
+  }
+
+  delay(3000); // avoid flooding
+}
