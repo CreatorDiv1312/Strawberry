@@ -1,0 +1,71 @@
+#include "esp_camera.h"
+#include <WiFi.h>
+#include <HTTPClient.h>
+
+// WiFi credentials
+const char* ssid = "Piyush";
+const char* password = "12345678";
+const char* serverUrl = "http://localhost:3000/live"; // Replace with actual endpoint
+
+// Camera configuration (unchanged from original)
+#define PWDN_GPIO_NUM -1
+#define RESET_GPIO_NUM -1
+#define XCLK_GPIO_NUM 0
+/* ... rest of pin definitions remain unchanged ... */
+
+void startCamera() {
+    // Camera initialization (unchanged)
+    camera_config_t config;
+    /* ... existing camera config ... */
+}
+
+void setup() {
+    Serial.begin(115200);
+    
+    // WiFi connection (unchanged)
+    WiFi.begin(ssid, password);
+    Serial.println("Connecting to WiFi...");
+    while(WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+    }
+    Serial.println("\nWiFi connected");
+    
+    // Camera initialization
+    startCamera();
+    
+    // Capture image
+    camera_fb_t *fb = esp_camera_fb_get();
+    if(!fb) {
+        Serial.println("Camera capture failed");
+        return;
+    }
+
+    // Create HTTP client
+    HTTPClient http;
+    http.begin(serverUrl);
+    
+    // Set headers for JPEG image transfer
+    http.addHeader("Content-Type", "image/jpeg");
+    http.addHeader("Content-Disposition", "form-data; name=\"image\"; filename=\"capture.jpg\"");
+    
+    // Send POST request with image data
+    int httpResponseCode = http.POST(fb->buf, fb->len);
+    
+    // Handle response
+    if(httpResponseCode > 0) {
+        String response = http.getString();
+        Serial.printf("HTTP code: %d\nResponse: %s\n", httpResponseCode, response.c_str());
+    } else {
+        Serial.printf("Error code: %d\n", httpResponseCode);
+    }
+    
+    // Cleanup
+    http.end();
+    esp_camera_fb_return(fb);
+}
+
+void loop() {
+    // Empty (single capture)
+    delay(10000);
+}
